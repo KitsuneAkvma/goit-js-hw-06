@@ -1,5 +1,5 @@
 //defining DOM elements
-const emailInput = document.querySelector('.login-form [type="Email"]');
+const emailInput = document.querySelector('.login-form [type="email"]');
 const passInput = document.querySelector('.login-form [type="password"]');
 const submit = document.querySelector('.login-form [type="submit"]');
 
@@ -16,8 +16,7 @@ class user {
     this[p2] = passInput.value;
 
     this.print = function () {
-      console.log(`Email: ${this.email}`);
-      console.log(`Password: ${this.password}`);
+      console.log(this);
     };
   }
 }
@@ -41,8 +40,8 @@ function submitForm(event) {
 
     user1.print();
 
-    emailInput.reset;
-    passInput.reset;
+    emailInput.reset();
+    passInput.reset();
     return true;
   }
   //If all the filds are filled but adres format is incorrect

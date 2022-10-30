@@ -9,7 +9,7 @@ let sliderValue = slider.value;
 text.style.fontSize = sliderValue + 'px';
 
 //adding event listener
-slider.addEventListener('input', (changeSize) => {
+slider.addEventListener('input', () => {
   sliderValue = slider.value; // read slider value
   text.style.fontSize = sliderValue + 'px'; //convert slider value to font size
 });

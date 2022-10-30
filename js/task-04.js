@@ -6,14 +6,14 @@ counterValue = 0; //reseting value to 0 on page load
 
 //adding event listeners to buttons
 
-increse.addEventListener('click', (increseValue) => {
+increse.addEventListener('click', () => {
   counterValue++;
 
   //assigning current 'counterValue' value to counter
   document.querySelector('#value').innerHTML = counterValue;
 });
 
-decrese.addEventListener('click', (decreseValue) => {
+decrese.addEventListener('click', () => {
   counterValue--;
 
   //assigning current 'counterValue' value to counter
