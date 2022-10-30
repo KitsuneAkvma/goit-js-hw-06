@@ -1,50 +1,49 @@
-//defining DOM elements
+// defining DOM elements
+const loginForm = document.querySelector('.login-form');
 const emailInput = document.querySelector('.login-form [type="email"]');
 const passInput = document.querySelector('.login-form [type="password"]');
 const submit = document.querySelector('.login-form [type="submit"]');
 
-//email and password form requirements
+// email and password form requirements
 let emailForm = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-//adding event listener
+// adding event listener
 submit.addEventListener('click', submitForm);
 
-//user class constructor
-class user {
-  constructor(p1, p2) {
-    this[p1] = emailInput.value;
-    this[p2] = passInput.value;
-
-    this.print = function () {
-      console.log(this);
-    };
-  }
-}
+// user class constructor
+const user = {
+  print() {
+    console.log(this);
+  },
+};
 
 function submitForm(event) {
-  event.preventDefault(); //prevent page refresh after submit
+  event.preventDefault(); // prevent page refresh after submit
 
-  //checking if all the fields are filled
+  // checking if all the fields are filled
   if (emailInput.value == '' || passInput.value == '') {
     alert('Please fill all the fields');
     return false;
   }
-  //checking if email adress format is correct
+  // checking if email adress format is correct
   else if (emailInput.value.match(emailForm)) {
     alert('everything ok');
 
-    let param1 = emailInput.getAttribute('name');
-    let param2 = passInput.getAttribute('name');
+    // creating new user with 'print' method
+    const user1 = Object.create(user);
 
-    let user1 = new user([param1], [param2]);
+    // the square brackets part on the left side are responsible for getting input field's name
+    user1[emailInput.getAttribute(`name`)] = emailInput.value;
+    user1[passInput.getAttribute(`name`)] = passInput.value;
 
+    // calling user1 method that prints this object
     user1.print();
 
-    emailInput.reset();
-    passInput.reset();
+    loginForm.reset();
     return true;
   }
-  //If all the filds are filled but adres format is incorrect
+
+  // if all the filds are filled but adres format is incorrect
   else {
     alert('Use correct email adress.');
     return false;
