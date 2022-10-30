@@ -48,3 +48,17 @@ button {
   width: 400px;
   height: 350px;
 }
+
+/*Task 10*/
+
+#boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.boxes__item {
+  border: 2px black solid;
+}

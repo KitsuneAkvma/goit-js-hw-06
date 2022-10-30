@@ -4,12 +4,6 @@ const createBtn = document.querySelector('[data-create]');
 const destroyBtn = document.querySelector('[data-destroy]');
 const boxesContainer = document.querySelector('#boxes');
 
-//styling collections's container
-boxesContainer.style.display = 'flex';
-boxesContainer.style.flexWrap = 'wrap';
-boxesContainer.style.gap = '1rem';
-boxesContainer.style.marginTop = '2rem';
-
 //adding event listeners
 createBtn.addEventListener('click', createCollection);
 destroyBtn.addEventListener('click', destroyCollection);
@@ -28,33 +22,25 @@ function createCollection() {
 
   for (let i = 0; i <= numberOfElements - 1; i++) {
     let box = document.createElement('div');
-    //adding class to every square
+    // adding class to every square
     box.classList.add('boxes__item');
-    //styling squares
-    box.style.width = '30px';
-    box.style.height = '30px';
-    box.style.backgroundColor = getRandomHexColor(); // random color
-    box.style.border = '2px black solid';
-    //adding just created square to collection's container
+    // adding box ID
+    box.setAttribute('id', `box${[i + 1]}`);
+
+    // random color
+    box.style.backgroundColor = getRandomHexColor();
+
+    //increasing size of boxes
+    const sizeOfBox = 30 + i * 10;
+    box.style.width = `${sizeOfBox}px`;
+    box.style.height = `${sizeOfBox}px`;
+
+    // adding just created square to collection's container
     boxesContainer.appendChild(box);
   }
 }
 
-//removing collection of colored squares
+// removing collection of colored squares
 function destroyCollection() {
-  let hasChild = document.querySelector('#boxes').hasChildNodes();
-
-  //loop throgh collection's container and check if it has items inside - if it so : remove boxes
-  do {
-    if (hasChild == true) {
-      document.querySelector('.boxes__item').remove();
-      hasChild = document.querySelector('#boxes').hasChildNodes();
-    } else {
-      //break the loop when there are no boxes
-      break;
-    }
-  } while (hasChild == true);
-
-  //reseting input value
-  numberInput.value = 0;
+  boxesContainer.innerHTML = '';
 }
