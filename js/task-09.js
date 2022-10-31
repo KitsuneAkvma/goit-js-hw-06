@@ -12,7 +12,7 @@ function getRandomHexColor() {
 }
 
 //Adding event listener
-body.addEventListener('click', () => {
+randomBtn.addEventListener('click', () => {
   let color = getRandomHexColor();
 
   body.style.backgroundColor = color; // assing generated color to page background
